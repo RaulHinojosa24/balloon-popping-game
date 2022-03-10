@@ -5,11 +5,13 @@ let poppedBalloons = 0;
 
 balloons.forEach(element => {
     element.addEventListener("mouseover", function (event) {
-        event.target.style.background = 0;
-        event.target.textContent = "POP!";
-        poppedBalloons++;
-
-        checkAllBalloonsPopped();
+        if (!event.target.classList.contains("popped")) {
+            event.target.style.background = 0;
+            event.target.textContent = "POP!";
+            event.target.classList.add("popped");
+            poppedBalloons++;
+            checkAllBalloonsPopped();
+        }
     });
 });
 
